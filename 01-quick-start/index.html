@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./lib/vue3.5.13.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>播放列表</h1>
+      <!-- v-model 屬性，來同步用戶的輸入值 -->
+      <input
+        type="text"
+        placeholder="請輸入要查找的歌曲名"
+        class="search"
+        v-model="searchTerm"
+      />
+      <ul>
+        <!-- v-for 屬性，渲染播放列表 -->
+        <!-- {{}} 引用變數 -->
+        <li v-for="song in filteredPlaylist">{{ song }}</li>
+      </ul>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
