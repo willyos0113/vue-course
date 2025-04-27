@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./lib/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- 1.2. 接著在 HTML 中，插入模板語法 {{變數名}} ，
+       此時就可以在 HTML 上訪問前述物件中的數據 -->
+      <h1>您好！{{name}}</h1>
+
+      <!-- 2.2. a 元素屬性名稱前，加上 v-bind 作為前綴字 -->
+      <!-- 2.3. 將 data 中的數據 link 直接寫在屬性 herf 值上，即可順利綁定 -->
+      <a :href="link" target="_blank">連結</a>
+
+      <ul>
+        <!-- 3.2. 使用 v-for 指令，迭代 todos 陣列  -->
+        <!-- 3.3. 使用 {{}} 模板語法，將迭代變數 todo 插入 -->
+        <li v-for="(todo,index) in todos">{{index + 1}}.{{todo}}</li>
+      </ul>
+
+      <ul>
+        <!-- 4.2. 使用 v-for 指令，迭代 todos2 陣列 -->
+        <li v-for="todo in todos2">
+          <!-- 4.3. 使用 {{}} 模板語法，將迭代物件的屬性 todo.content 套入 -->
+          <!-- 4.4. 使用 v-bind 指令，將 input 元素中的 checked 屬性綁定到 todo.complete 來判斷完成與否 -->
+          <input type="checkbox" :checked="todo.complete" />{{todo.content}}
+        </li>
+      </ul>
+
+      <!-- 5.2. 運用 books 陣列長度，判斷 0 → 沒有書; 1 → h2顯示書名; 2以上 →
+條列渲染 -->
+      <p v-if="books.length === 0">目前沒有任何書籍</p>
+      <h2 v-else-if="books.length === 1">{{books[0]}}</h2>
+      <ul v-else>
+        <!-- 5.3. 條列渲染部分，運用之前學到的 v-for 指令 -->
+        <li v-for="book in books">{{book}}</li>
+      </ul>
+
+      <div class="question">
+        <p>問: Vue 是一個甚麼樣的框架?</p>
+        <p v-show="showAnswer" class="answer">
+          答: Vue 是一套用於建構用戶介面的漸進式框架
+        </p>
+        <!-- 6.2. button 元素上架設事件監聽，用 js 表達式開關 showAnswer -->
+        <button @click="showAnswer = !showAnswer">
+          <!-- 6.3. button 元素開關時，後方文字要有所變化 -->
+          {{showAnswer ? "隱藏" : "顯示"}}答案
+        </button>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
