@@ -47,9 +47,14 @@
           答: Vue 是一套用於建構用戶介面的漸進式框架
         </p>
         <!-- 6.2. button 元素上架設事件監聽，用 js 表達式開關 showAnswer -->
-        <button @click="showAnswer = !showAnswer">
+        <!-- <button @click="showAnswer = !showAnswer"> -->
+        <!-- 8.2. click 事件後方，改為直接代入函式名稱 -->
+        <button @click="toggleAnswer">
           <!-- 6.3. button 元素開關時，後方文字要有所變化 -->
-          {{showAnswer ? "隱藏" : "顯示"}}答案
+          <!-- {{showAnswer ? "隱藏" : "顯示"}}答案 -->
+
+          <!-- 7.2. HTML 模板上改為套用 computed 屬性下定義的 label() 函式 -->
+          {{label}}
         </button>
       </div>
     </div>

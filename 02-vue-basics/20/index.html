@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./lib/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <!-- 10.3. 遍歷 vueBlogs 渲染元素 -->
+        <li v-for="item in vueBlogs">{{ item }}</li>
+        <!-- 10.5. 遍歷 getVueBlogs 渲染元素 -->
+        <!-- <li v-for="item in getVueBlogs()">{{ item }}</li> -->
+      </ul>
+      <button @click="counter += 1">計數器{{ counter }}</button>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
