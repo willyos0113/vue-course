@@ -11,6 +11,10 @@ const app = Vue.createApp({
       // 13.4. input 事件發生時，將當前輸入內容更新至 username(數據同步給 username)
       this.username = e.target.value;
     },
+    // 14.2. 撰寫點擊事件函數 resetUsername()
+    resetUsername() {
+      this.username = "";
+    },
   },
 });
 app.mount("#app");
