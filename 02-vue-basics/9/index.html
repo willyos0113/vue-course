@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>根據條件新增或刪除 class 屬性</title>
+    <script src="./lib/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- 19.2. 在 p 元素上套用數個 class 屬性 -->
+      <!-- 19.3. {hide: isHidden} - 判斷 isHidden 成立的話，則添加 class = "hide" 反之則不加 -->
+      <p :class="[textClass, stateClass, {hide: isHidden}]">這是一個段落...</p>
+      <!-- 19.5. 點擊按鈕，切換 isHidden 狀態 -->
+      <button @click="isHidden =! isHidden">切換狀態</button>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>

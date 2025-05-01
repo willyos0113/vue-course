@@ -9,12 +9,14 @@
   </head>
   <body>
     <div id="app">
-      <div class="form">
+      <!-- 17.1. 監聽 submit 事件 -->
+      <!-- 17.3. 為避免手動調用事件函數，改用 vue 所提供的 .prevent 事件修飾符 -->
+      <form @submit.prevent="handleSubmit">
         <label for="username">用戶名: </label>
         <div>
           <input type="text" id="username" />
         </div>
-        <!-- radio input 為例: v-model 雙向綁定 gender 響應變數 -->
+        <!-- 16.1. radio input 為例: v-model 雙向綁定 gender 響應變數 -->
         <label for="gender">性別: </label>
         <div class="radio-group">
           <input
@@ -30,7 +32,7 @@
             v-model="gender"
           /><span>女</span>
         </div>
-        <!-- checkbox input 為例: v-model 雙向綁定 interests 響應變數 -->
+        <!-- 16.2. checkbox input 為例: v-model 雙向綁定 interests 響應變數 -->
         <label for="interest">興趣: </label>
         <div id="interest" class="checkbox-group">
           <input
@@ -55,21 +57,22 @@
           />
           <span>全端</span>
         </div>
-        <!-- select 為例: v-model 雙向綁定 occupation 響應變數 -->
+        <!-- 16.3. select 為例: v-model 雙向綁定 occupation 響應變數 -->
         <label for="occupation">職業: </label>
         <select name="occupation" v-model="occupation">
           <option value="frontend">前端工程師</option>
           <option value="backend">前端工程師</option>
           <option value="fullstack">前端工程師</option>
         </select>
-        <!-- textarea 為例: v-model 雙向綁定 intro 響應變數 -->
+        <!-- 16.4. textarea 為例: v-model 雙向綁定 intro 響應變數 -->
         <div>
           <label for="intro">自我介紹: </label>
           <div>
             <textarea row="10" v-model="intro"></textarea>
           </div>
         </div>
-      </div>
+        <button type="submit">提交</button>
+      </form>
       <div class="result">
         <ul>
           <li>性別: {{ gender }}</li>

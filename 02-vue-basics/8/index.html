@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>inline-style 中綁定響應數據</title>
+    <script src="./lib/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 18.1. inline-style 中透過 v-bind 綁定 computed 屬性 -->
+      <div><p :style="pStyle">這是一個段落...</p></div>
+      <!-- 18.4. @click 事件中，操作 fontSize 響應數據 -->
+      <button class="increase" @click="fontSize += 1">A</button>
+      <button class="decrease" @click="fontSize -= 1">a</button>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
