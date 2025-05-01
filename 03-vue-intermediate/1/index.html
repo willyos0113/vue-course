@@ -13,6 +13,16 @@
         <!-- 1.2. 使用 v-html 指令，將 content 插入 article 元素內部 -->
         <article v-html="content"></article>
       </div>
+
+      <div>
+        <!-- 2.3. 使用 v-once 指令部分，因只渲染一次，list.length 會停留在初始長度 -->
+        <p v-once>list 初始長度: {{ list.length }}</p>
+        <p>list 長度: {{ list.length }}</p>
+        <!-- 2.2. 當點擊按鈕時，list 陣列會被添加一個元素 -->
+        <button @click="list.push(list.length + 1)">添加元素</button>
+      </div>
+      <!-- 3.2. 中括號中填入變數實現動態屬性名 -->
+      <input type="text" :[attr]="value" @[event]="handleChange" />
     </div>
     <script src="index.js"></script>
   </body>
