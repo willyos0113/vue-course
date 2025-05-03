@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>v-for 進階用法</title>
+    <script src="./lib/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <!-- 4.1. (item, name, index) 來取得屬性值、屬性名和索引 -->
+        <li v-for="(item, name, index) in blogPost">
+          {{ index }}, {{ name }} - {{ item }}
+        </li>
+      </ul>
+      <ul>
+        <!-- 4.2. 建議加上 :key 綁定陣列，之後陣列順序變化時，標籤元素的順序也會跟著改變 -->
+        <li v-for="todo in todos" :key="todo.id">{{ todo.content }}</li>
+      </ul>
+      <ul>
+        <!-- 4.3. 也可以指定一個數字，作爲 v-for 遍歷的終值 -->
+        <li v-for="n in 5">{{ n }}</li>
+      </ul>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>

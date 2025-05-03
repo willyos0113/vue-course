@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>多個參數傳遞和註冊多個事件</title>
+    <script src="./lib/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <!-- 5.2. click 函數有多個參數時，需用 $event 來顯式指定事件物件傳入 -->
+        <!-- 5.3. 註冊多個事件函數時，需以逗點分隔，且必須指定調用形式而非僅以函數名 -->
+        <li
+          v-for="todo in todos"
+          :key="todo.id"
+          @click="handleClick(todo.id, $event), showContent(todo.content)"
+        >
+          {{ todo.content }}
+        </li>
+      </ul>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
