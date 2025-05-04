@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>表單輸入相關修飾符</title>
+    <script src="./lib/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- 8.1. .lzay .trim 範例 -->
+      <input type="text" v-model.lazy.trim="username" />
+      <p>{{ username }}</p>
+      <!-- 8.2. .number 範例 -->
+      <input type="text" v-model.number="year" />
+      <p>{{ typeof year }}</p>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>

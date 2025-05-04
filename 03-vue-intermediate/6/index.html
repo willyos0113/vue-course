@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>事件相關修飾符</title>
+    <script src="./lib/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- 6.1. 避免預設行為 @click.prevent -->
+      <a href="https://google.com" @click.prevent>點擊跳轉</a>
+      <!-- 6.2. 避免事件冒泡(阻止事件傳遞到父元素) @click.stop -->
+      <ul @click="handleUlClick">
+        <li @click="handleLiClick">1</li>
+        <li @click.stop="handleLiClick">2</li>
+      </ul>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
