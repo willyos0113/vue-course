@@ -19,6 +19,12 @@ export default {
       this.currentPage = n;
     },
   },
+  watch: {
+    // 監聽父組件傳遞來的 props
+    totalPage(newVal, oldVal) {
+      console.log(newVal, oldVal);
+    },
+  },
 };
 </script>
 <style>
