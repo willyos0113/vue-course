@@ -7,7 +7,12 @@
       {{ options.user.active ? "是" : "否" }}
     </p>
     <ul>
-      <li v-for="msg in searchedMessages" :key="msg.id">{{ msg.content }}</li>
+      <!-- <li v-for="msg in searchedMessages" :key="msg.id">{{ msg.content }}</li> -->
+      <MessageListItem
+        v-for="msg in messages"
+        :key="msg.id"
+        :msg="msg.content"
+      />
     </ul>
     <button @click="messages = []">刪除全部</button>
     <button @click="options.title = '這是標題'">修改標題</button>
@@ -16,9 +21,11 @@
 </template>
 
 <script>
-import { ref, reactive, computed } from "vue";
+import { ref, reactive, computed, watch, watchEffect } from "vue";
+import MessageListItem from "./MessageListItem.vue";
 
 export default {
+  components: { MessageListItem },
   setup() {
     // 1.1. ref() 將任何形態數據轉換成響應性數據
     const messages = ref([
@@ -35,6 +42,46 @@ export default {
         name: "張三",
         active: true,
       },
+    });
+
+    // 1.4. watch() - 監聽 ”基本型態” 響應式數據的變化
+    // watch(
+    //   () => options.title,
+    //   (newVal, oldVal) => {
+    //     console.log(newVal, oldVal);
+    //   }
+    // );
+    // watch(
+    //   () => options.user.name,
+    //   (newVal, oldVal) => {
+    //     console.log(newVal, oldVal);
+    //   }
+    // );
+
+    // 1.5. watch() - 監聽 ”代理物件” 中的響應屬性變化
+    // 1.6. 改進無法監聽到 oldVal，使新舊值都可被存取
+    // watch(
+    //   () => JSON.parse(JSON.stringify(options)),
+    //   (newVal, oldVal) => {
+    //     console.log(newVal, oldVal);
+    //   },
+    //   {
+    //     deep: true,
+    //   }
+    // );
+
+    // 1.7. watch() - 同時監聽多個響應數據
+    // watch(
+    //   [() => options.title, () => options.user.name],
+    //   (newVals, oldVals) => {
+    //     console.log(newVals, oldVals);
+    //   }
+    // );
+
+    // 1.8. watchEffect() - 會先執行一次後，響應數據變化時再執行
+    watchEffect(() => {
+      console.log(options.title);
+      console.log(options.user.name);
     });
 
     const searchTerm = ref("");
@@ -57,4 +104,8 @@ export default {
   },
 };
 </script>
-<style></style>
+<style>
+button {
+  margin: 0 10px 0 10px;
+}
+</style>
