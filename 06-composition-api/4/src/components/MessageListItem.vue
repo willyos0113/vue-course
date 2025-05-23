@@ -6,7 +6,7 @@
 import { ref, watch, watchEffect, toRefs } from "vue";
 
 export default {
-  // 2.1. 傳遞 props 屬性
+  // 4.1. 傳遞 props 屬性
   props: ["msg"],
   setup(props) {
     console.log(props.msg);

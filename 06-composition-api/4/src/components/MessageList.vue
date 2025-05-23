@@ -44,6 +44,55 @@ export default {
       },
     });
 
+    // 1.4. watch() - 監聽 ”基本型態” 響應式數據的變化
+    // watch(
+    //   () => options.title,
+    //   (newVal, oldVal) => {
+    //     console.log(newVal, oldVal);
+    //   }
+    // );
+    // watch(
+    //   () => options.user.name,
+    //   (newVal, oldVal) => {
+    //     console.log(newVal, oldVal);
+    //   }
+    // );
+
+    // 1.5. watch() - 監聽 ”代理物件” 中的響應屬性變化
+    // 1.6. 改進無法監聽到 oldVal，使新舊值都可被存取
+    // watch(
+    //   () => JSON.parse(JSON.stringify(options)),
+    //   (newVal, oldVal) => {
+    //     console.log(newVal, oldVal);
+    //   },
+    //   {
+    //     deep: true,
+    //   }
+    // );
+
+    // 1.7. watch() - 同時監聽多個響應數據
+    // watch(
+    //   [() => options.title, () => options.user.name],
+    //   (newVals, oldVals) => {
+    //     console.log(newVals, oldVals);
+    //   }
+    // );
+
+    // 1.8. watchEffect() - 會先執行一次後，響應數據變化時再執行
+    watchEffect(() => {
+      console.log(options.title);
+      console.log(options.user.name);
+    });
+
+    const searchTerm = ref("");
+    // 1.3. 定義 computed() 函數回傳計算結果
+    const searchedMessages = computed(() => {
+      if (searchTerm.value === "") return messages.value;
+      return messages.value.filter((msg) => {
+        return msg.content.includes(searchTerm.value); // 包含 searchTerm 的部分才顯示
+      });
+    });
+
     // 1.1. ref() 包裝的響應性數據 .value 才能存取他的值
     console.log(messages.value);
 

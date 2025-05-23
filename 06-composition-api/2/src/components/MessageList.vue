@@ -44,6 +44,15 @@ export default {
       },
     });
 
+    const searchTerm = ref("");
+    // 2. 定義 computed() 函數回傳計算結果
+    const searchedMessages = computed(() => {
+      if (searchTerm.value === "") return messages.value;
+      return messages.value.filter((msg) => {
+        return msg.content.includes(searchTerm.value); // 包含 searchTerm 的部分才顯示
+      });
+    });
+
     // 1.1. ref() 包裝的響應性數據 .value 才能存取他的值
     console.log(messages.value);
 
